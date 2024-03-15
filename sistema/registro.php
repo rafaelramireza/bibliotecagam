@@ -6,7 +6,7 @@ include('./conexion.php');
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $errores=array();
-    print_r($_POST);
+
     $nombres=(isset($_POST['nombres']))?$_POST['nombres']:null;
     $apellidos=(isset($_POST['apellidos']))?$_POST['apellidos']:null;
     $email=(isset($_POST['email']))?$_POST['email']:null;
@@ -44,17 +44,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if(empty($confirmarPassword)){
         $errores['confirmarPassword']= "Confirma la contraseña";
-
-
     }elseif($password!=$confirmarPassword){
         $errores['confirmarPassword']="Las contraseñas no coinciden";
-
-
-
     }
 
-
-    print_r($errores);
+    foreach($errores as $error){
+        echo "<br/>".$error."<br/>";
+    }
 
     if(empty($errores)){
 
@@ -75,16 +71,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 ':licenciatura'=>$licenciatura,
                 ':semestre'=>$semestre
             ));
+            header('Location:./login.html');
     
         } catch(PDOException $e){
     
             echo "Error al conectar a la base de datos", $e->getMessage();
         }
 
+    }else{
+        echo "<a href='./registro.html'>Registro</a>";
     }
-    else{
-        echo "Verifica los datos vacíos";
-    }
-    
-}
+}    
+
 ?>
