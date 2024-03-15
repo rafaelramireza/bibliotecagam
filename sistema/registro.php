@@ -29,6 +29,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if(empty($semestre)){
         $errores['semestre']= "El campo semestre es requerido";
     }
+
+    if(empty($email)){
+        $errores['email']= "El campo email es requerido";        
+        }
+    }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $errores['email']="El email no es válido";
+
     print_r($errores);
 
     if(empty($errores)){
@@ -59,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     else{
         echo "Verifica los datos vacíos";
-        }
+    }
     
 }
 ?>
