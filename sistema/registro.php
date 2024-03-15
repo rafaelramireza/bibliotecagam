@@ -13,7 +13,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $password=(isset($_POST['password']))?$_POST['password']:null;
     $licenciatura=(isset($_POST['licenciatura']))?$_POST['licenciatura']:null;
     $semestre=(isset($_POST['semestre']))?$_POST['semestre']:null;
-
+    $confirmarPassword=(isset($_POST['confirmarPassword']))?$_POST['confirmarPassword']:null;
+    
     if(empty($nombres)){
         $errores['nombres']= "El campo nombres es requerido";
     }
@@ -32,9 +33,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if(empty($email)){
         $errores['email']= "El campo email es requerido";        
-        }
+        
     }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
         $errores['email']="El email no es válido";
+    }
+
+    if(empty($password)){
+        $errores['password']= "El campo password es requerido";
+    }
+
+    if(empty($confirmarPassword)){
+        $errores['confirmarPassword']= "Confirma la contraseña";
+
+
+    }elseif($password!=$confirmarPassword){
+        $errores['confirmarPassword']="Las contraseñas no coinciden";
+
+
+
+    }
+
 
     print_r($errores);
 
