@@ -21,7 +21,7 @@ if(!isset($_SESSION['usuario_id'])){
 |
 <a href="https://www.google.com.mx">Google</a>
 |
-<a href="cerrar.php"></a>
+<a href="cerrar.php">Cerrar</a>
 <br>
 
 <h2> Bienvenido a la aplicación <?php echo $_SESSION['usuario_nombre'];?></h2>
