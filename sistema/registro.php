@@ -58,6 +58,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $pdo=new PDO("mysql:host=$direccionservidor;dbname=$baseDatos",$usuarioBD,$passwordBD);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//Establece el modo de error
     
+            $nuevoPassword=password_hash($password, PASSWORD_DEFAULT);
+
             $sql="INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `email`, `password`, `licenciatura`, `semestre`)
             VALUES (NULL, :nombres, :apellidos, :email, :password, :licenciatura, :semestre);";
             
@@ -66,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 ':nombres'=>$nombres,
                 ':apellidos'=>$apellidos,
                 ':email'=>$email,
-                ':password'=>$password,
+                ':password'=>$nuevoPassword,
                 ':licenciatura'=>$licenciatura,
                 ':semestre'=>$semestre
             ));

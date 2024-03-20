@@ -22,10 +22,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
         $login=false;
         foreach($usuarios as $usuario){
-            // echo $usuario["password"];
-            // if(password_verify($password,$usuario['password'])){
+             if(password_verify($password,$usuario['password'])){
                 //$_SESSION["loggedUser"]=$usuario;
-            if($password==$usuario["password"]){
                 $login=true;
             }
                 
