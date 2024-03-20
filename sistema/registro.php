@@ -20,9 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if(empty($apellidos)){
         $errores['apellidos']= "El campo apellidos es requerido";
     }
-    if(empty($email)){
-        $errores['email']= "El campo email es requerido";
-    }
+    
     if(empty($licenciatura)){
         $errores['licenciatura']= "El campo licenciatura es requerido";
     }
@@ -80,7 +78,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
 
     }else{
-        echo "<a href='./registro.html'>Registro</a>";
+        echo "<br/> <a href='./registro.html'>Registro</a>";
     }
 }    
 
